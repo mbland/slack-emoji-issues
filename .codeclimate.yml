@@ -1,12 +1,24 @@
-languages:
-  Ruby: false
-  JavaScript: true
-  PHP: false
-  Python: false
+---
+engines:
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.inc"
+  - "**.js"
+  - "**.jsx"
+  - "**.module"
 exclude_paths:
 - "*.md"
 - "*.png"
 - "*.json"
-- "config/*"
-- "tests/*"
-- "tests/helpers/*"
+- config/*
+- tests/*
+- tests/helpers/*
