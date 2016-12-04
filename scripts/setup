@@ -1,0 +1,39 @@
+#! /bin/bash
+#
+# Runs first-time setup commands for a freshly-cloned repository
+
+_setup() {
+  local arg
+  local word_index
+  local args
+
+  while [[ "$#" -ne 0 ]]; do
+    arg="$1"
+    shift
+    case "$arg" in
+    --complete)
+      # Tab completions
+      if [[ "$1" -eq '0' ]]; then
+        echo '-d' '--dry-run'
+      fi
+      return
+      ;;
+    -d|--dry-run)
+      _GO_DRY_RUN='true'
+      ;;
+    *)
+      echo "Unknown argument: $1"
+      return 1
+      ;;
+    esac
+  done
+
+  @go.critical_section_begin
+  export PATH="node_modules/.bin:$PATH"
+  @go.log_command npm install
+  @go.log_command @go lint
+  @go.log_command @go test
+  @go.critical_section_end
+}
+
+_setup "$@"
