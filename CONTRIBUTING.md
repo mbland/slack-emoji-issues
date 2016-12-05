@@ -28,7 +28,7 @@ file](https://github.com/atom/atom/blob/master/CONTRIBUTING.md).
 - [README](README.md)
 - [Code of conduct](CODE_OF_CONDUCT.md)
 - [License information](LICENSE.md)
-- [Original repository](https://github.com/mbland/slack-github-issues/)
+- [Original repository](https://github.com/mbland/slack-github-issues)
 - [Issues](https://github.com/mbland/slack-github-issues/issues)
 - [Pull requests](https://github.com/mbland/slack-github-issues/pulls)
 
@@ -99,8 +99,8 @@ After making changes, run `./go lint` and `./go test` frequently. Add new tests
 in [the `tests` directory](./tests/) for any new functionality, or to reproduce
 any bugs you intend to fix.
 
-You may wish to make an alias for the `./go` script for convenience. For
-example:
+If your shell is Bash, you may wish to make an alias for the `./go` script for
+convenience. For example:
 
 ```sh
 $ eval "$(./go env sgi)"
@@ -152,8 +152,9 @@ repository]().
 
 ## Testing
 
-- Continuous integration status: [![Continuous integration status](https://travis-ci.org/mbland/slack-github-issues.png?branch=master)](https://travis-ci.org/mbland/slack-github-issues)
-- Coverage status: [![Coverage Status](https://coveralls.io/repos/github/mbland/slack-github-issues/badge.svg?branch=master)](https://coveralls.io/github/mbland/slack-github-issues?branch=master)
+- Continuous integration status: [![Continuous integration status from Travis CI](https://travis-ci.org/mbland/slack-github-issues.svg?branch=master)](https://travis-ci.org/mbland/slack-github-issues)
+- Static analysis status: [![Static analysis status from Code Climate](https://codeclimate.com/github/mbland/slack-github-issues/badges/gpa.svg)](https://codeclimate.com/github/mbland/slack-github-issues)
+- Coverage status: [![Coverage status from Coveralls](https://coveralls.io/repos/mbland/slack-github-issues/badge.svg?branch=master&service=github)](https://coveralls.io/github/mbland/slack-github-issues?branch=master)
 
 No bug fixes or new features will be accepted without accompanying tests.
 Period.

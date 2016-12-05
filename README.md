@@ -1,12 +1,9 @@
 # Slack-to-GitHub Issues: Uses Slack `reaction_added` events to file GitHub issues
 
 [![NPM](https://nodei.co/npm/slack-github-issues.png?compact=true)](https://nodei.co/npm/slack-github-issues/)<br/>
-[![Build
-Status](https://travis-ci.org/mbland/slack-github-issues.svg?branch=master)](https://travis-ci.org/mbland/slack-github-issues)
-[![Code
-Climate](https://codeclimate.com/github/mbland/slack-github-issues/badges/gpa.svg)](https://codeclimate.com/github/mbland/slack-github-issues)
-[![Coverage
-Status](https://coveralls.io/repos/mbland/slack-github-issues/badge.svg?branch=master&service=github)](https://coveralls.io/github/mbland/slack-github-issues?branch=master)
+[![Continuous integration status from Travis CI](https://travis-ci.org/mbland/slack-github-issues.svg?branch=master)](https://travis-ci.org/mbland/slack-github-issues)
+[![Static analysis status from Code Climate](https://codeclimate.com/github/mbland/slack-github-issues/badges/gpa.svg)](https://codeclimate.com/github/mbland/slack-github-issues)
+[![Coverage status from Coveralls](https://coveralls.io/repos/mbland/slack-github-issues/badge.svg?branch=master&service=github)](https://coveralls.io/github/mbland/slack-github-issues?branch=master)
 
 Source: https://github.com/mbland/slack-github-issues
 
