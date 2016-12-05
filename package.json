@@ -1,6 +1,6 @@
 {
   "name": "slack-github-issues",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "Mike Bland <mbland@acm.org> (https://mike-bland.com/)",
   "description": "Uses Slack `reaction_added` events to file GitHub issues",
   "license": "ISC",

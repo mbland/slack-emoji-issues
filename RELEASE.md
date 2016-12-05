@@ -1,4 +1,4 @@
-# slack-github-issues v1.0.0
+# slack-github-issues v1.0.1
 
 ## A Node.js package for using Slack `reaction_added` events to file GitHub issues
 
