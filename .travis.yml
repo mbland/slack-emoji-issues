@@ -3,4 +3,7 @@ node_js:
 - node
 - '4.2'
 script:
-- ./go lint && ./go test --coverage
+- "./go lint && ./go test --coverage"
+env:
+  matrix:
+    secure: AT2IinuU67P8a/qt1TLILQu9L/plawLBP/5h8qNL4hrOF3ZZ3MDz6pFdjLhe74Nh3MPxPJ2PSj0PUxtAqo9jVY8jHBEnU5+LOWdiQwSa6vAEf0sIyzAfuZU6jxu/uKwhyECoZsG76cGdWYL6u+YHN7bLG2Wo2m5HPCQEwlNMS3XyUTjB1qqTj4vezAKAUAOc1w9hsq+oHJhRlSzRBe0mPCYyVZbU9HjlQWNgVoyilwroXPpr98rIJgXBXWpARdcmBsTdHGdLFzgZpjGPviNf2GjFgzwEe/ZNqdHR7tY2z3FUBV0F7c1oHKCG2TMl9lcyeTDxYbseNbS6F/Mp+PoIJ68+XKye+1meYcQ6eX7KPKGjkVFdco2v2DTWNcS/5I3PwmsRh44CEQrKh3pslrnvIECdyl9DGyTj1EfYRHs6IBpsf1Z7NneExy+y3WHSAQjz3Yyqjarw6zYbL19Dg/HfTH0jN9ppUpIz/zH8U0KfVon3dUfGwnrKqk8La5qHk/4cAjzX1rY9BjKGA5SaHQfqEtSiXY0Tz+eU6NVmo1fciERTCq1ZVlcDtxz/bVy4taJIUtI46Wo4jNPto9J5MYE1/AvPDdwtbMGDSvTocNOBU5ktRq5MAOWp2Y7JUP9fE7pco5sNYblWsHxhRjQBd3dwafICFKhPN4Sqdd/7A00FOyQ=
