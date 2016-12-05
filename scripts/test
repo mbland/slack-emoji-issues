@@ -126,6 +126,7 @@ _test_run_mocha() {
 
 _test_coverage() {
   local report_path="${_GO_ROOTDIR}/coverage/lcov-report/index.html"
+  local lcov_info_path="${_GO_ROOTDIR}/coverage/lcov.info"
 
   rm -f "$report_path"
   __COVERAGE_RUN='true' _test_run_mocha "${@:2}"
@@ -138,7 +139,7 @@ _test_coverage() {
       open "$report_path"
     fi
   else
-    if ! coveralls < "$report_path"; then
+    if ! coveralls < "$lcov_info_path"; then
       echo "Failed to send coverage report to Coveralls." >&2
       return 1
     fi
@@ -146,7 +147,7 @@ _test_coverage() {
     echo 'https://coveralls.io/github/mbland/go-script-bash'
 
     if [[ -n "$CODECLIMATE_REPO_TOKEN" ]]; then
-      if ! codeclimate-test-reporter < "$report_path"; then
+      if ! codeclimate-test-reporter < "$lcov_info_path"; then
         echo 'Failed to send coverage report to Code Climate.' >&2
         return 1
       fi
