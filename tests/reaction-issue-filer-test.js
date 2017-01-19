@@ -110,6 +110,7 @@ describe('ReactionIssueFiler', function() {
       message.item.channel = 'D5150OU812';
       return reactor.execute(message).should.be.rejectedWith(null)
         .then(function() {
+          slackClient.messageId.calledOnce.should.be.false;
           messageLock.lock.calledOnce.should.be.false;
           messageLock.unlock.calledOnce.should.be.false;
         });
