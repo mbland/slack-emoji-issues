@@ -11,6 +11,8 @@ exports = module.exports = {
   ITEM_USER_ID: 'U1984OU812',
   CHANNEL_ID: 'C5150OU812',
   CHANNEL_NAME: 'bot-dev',
+  PRIVATE_CHANNEL_ID: 'G5150OU812',
+  PRIVATE_CHANNEL_NAME: 'private-bot-dev',
   TIMESTAMP: '1360782804.083113',
   PERMALINK: 'https://mbland.slack.com/archives/bot-dev/p1360782804083113',
   ISSUE_URL: 'https://github.com/mbland/slack-github-issues/issues/1',
@@ -25,6 +27,9 @@ exports = module.exports = {
       dataStore: {
         getChannelById: function(channelId) {
           return { id: channelId, name: exports.CHANNEL_NAME };
+        },
+        getGroupById: function(groupId) {
+          return { id: groupId, name: exports.PRIVATE_CHANNEL_NAME };
         },
         teams: {
           T19845150: { domain: exports.TEAM_DOMAIN }
