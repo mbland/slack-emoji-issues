@@ -106,6 +106,15 @@ describe('ReactionIssueFiler', function() {
       messageLock.unlock.returns(Promise.resolve(helpers.MESSAGE_ID));
     });
 
+    it('should ignore direct messages', function() {
+      message.item.channel = 'D5150OU812';
+      return reactor.execute(message).should.be.rejectedWith(null)
+        .then(function() {
+          messageLock.lock.calledOnce.should.be.false;
+          messageLock.unlock.calledOnce.should.be.false;
+        });
+    });
+
     it('should receive a message and file an issue', function() {
       return reactor.execute(message)
         .should.become(helpers.ISSUE_URL).then(function() {
