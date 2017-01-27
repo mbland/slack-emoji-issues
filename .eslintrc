@@ -34,6 +34,7 @@
     "camelcase": [
       2,
       { "properties": "always" }
-    ]
+    ],
+    "keyword-spacing": [ 2 ]
   }
 }
