@@ -1,4 +1,6 @@
-# slack-github-issues v1.0.1
+# slack-github-issues v1.1.0
+
+This version prevents errors by ignoring reactions from direct messages and properly getting channel (actually, "group") info from private channel messages, courtesy of [Greg Walker](https://github.com/mgwalker).
 
 ## A Node.js package for using Slack `reaction_added` events to file GitHub issues
 
