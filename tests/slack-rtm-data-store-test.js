@@ -19,9 +19,15 @@ describe('SlackRtmDataStore', function() {
     rtmDataStore.teamId().should.equal(helpers.TEAM_ID);
   });
 
-  it('returns a Promise from channelById', function() {
+  it('returns a Promise from channelById with public channel', function() {
     return rtmDataStore.channelById(helpers.CHANNEL_ID)
       .should.become({ id: helpers.CHANNEL_ID, name: helpers.CHANNEL_NAME });
+  });
+
+  it('returns a Promise from channelById with private channel', function() {
+    return rtmDataStore.channelById(helpers.PRIVATE_CHANNEL_ID)
+      .should.become({ id: helpers.PRIVATE_CHANNEL_ID,
+        name: helpers.PRIVATE_CHANNEL_NAME });
   });
 
   it('returns a Promise from teamInfo', function() {
