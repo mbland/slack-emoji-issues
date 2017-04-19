@@ -106,6 +106,19 @@ describe('ReactionIssueFiler', function() {
       messageLock.unlock.returns(Promise.resolve(helpers.MESSAGE_ID));
     });
 
+    it('should ignore reactions that aren\'t for normal messages', function() {
+      message.item = {
+        type: 'file',
+        file: 'F5150OU812'
+      };
+      return reactor.execute(message).should.be.rejectedWith(null)
+        .then(function() {
+          slackClient.messageId.calledOnce.should.be.false;
+          messageLock.lock.calledOnce.should.be.false;
+          messageLock.unlock.calledOnce.should.be.false;
+        });
+    });
+
     it('should ignore direct messages', function() {
       message.item.channel = 'D5150OU812';
       return reactor.execute(message).should.be.rejectedWith(null)

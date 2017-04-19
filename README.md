@@ -52,6 +52,11 @@ the `ReactionIssueFiler` will [react to the message with a `successReaction`
 emoji](https://api.slack.com/methods/reactions.add). Finally, it will return the
 issue URL to the application.
 
+**Note:** This plugin only handles reactions to normal messages, not file or
+file comment reactions. This support may be added in the future if the demand
+exists, but isn't straightforward, since there's no one specific channel
+associated with either.
+
 ## <a id='whats-different'></a>What's different from mbland/hubot-slack-github-issues?
 
 This package has been refactored heavily to ensure the core logic is 100%
