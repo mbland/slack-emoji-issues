@@ -1,6 +1,10 @@
-# slack-github-issues v1.1.0
+# slack-github-issues v1.1.1
 
-This version prevents errors by ignoring reactions from direct messages and properly getting channel (actually, "group") info from private channel messages, courtesy of [Greg Walker](https://github.com/mgwalker).
+This is a bugfix/maintenance release.
+
+The plugin no longer logs error messages for file and file comment messages; it ignores them instead. Support for file and file comment reactions may be added in the future if the demand exists, but isn't straightforward, since there's no one specific channel associated with either.
+
+The `./go` script now downloads [mbland/go-script-bash](https://github.com/mbland/go-script-bash) v1.5.0 automatically rather than having it attached to this repository as a submodule.
 
 ## A Node.js package for using Slack `reaction_added` events to file GitHub issues
 
