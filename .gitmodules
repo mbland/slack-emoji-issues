@@ -1,3 +1,0 @@
-[submodule "scripts/go-script-bash"]
-	path = scripts/go-script-bash
-	url = https://github.com/mbland/go-script-bash
