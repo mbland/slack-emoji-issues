@@ -33,7 +33,7 @@ describe('Integration test', function() {
         'githubRepository: slack-github-issues, ' +
         'channelNames: bot-dev';
 
-  before(function(done) {
+  before(function() {
     apiStubServer = new ApiStubServer();
     process.env.HUBOT_SLACK_TOKEN = '<hubot-slack-api-token>';
     process.env.HUBOT_GITHUB_TOKEN = '<hubot-github-api-token>';
@@ -42,28 +42,35 @@ describe('Integration test', function() {
     config.slackApiBaseUrl = apiStubServer.address() + '/slack/';
     config.githubApiBaseUrl = apiStubServer.address() + '/github/';
 
-    temp.open(scriptName + '-integration-test-config-', function(err, info) {
-      if (err) {
-        return done(err);
-      }
-      fs.write(info.fd, JSON.stringify(config));
-      fs.close(info.fd, function(err) {
-        if (!err) {
-          process.env.HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH = info.path;
+    return new Promise(function(resolve, reject) {
+      temp.open(scriptName + '-integration-test-config-', function(err, info) {
+        if (err) {
+          return reject(err);
         }
-        done(err);
+        fs.write(info.fd, JSON.stringify(config));
+        fs.close(info.fd, function(err) {
+          if (!err) {
+            process.env.HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH = info.path;
+            resolve();
+          }
+          reject(err);
+        });
       });
     });
   });
 
-  after(function(done) {
+  after(function() {
     var configPath = process.env.HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH;
 
     apiStubServer.close();
     delete process.env.HUBOT_SLACK_TOKEN;
     delete process.env.HUBOT_GITHUB_TOKEN;
     delete process.env.HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH;
-    fs.unlink(configPath, done);
+    return new Promise(function(resolve, reject) {
+      fs.unlink(configPath, function(err) {
+        !err ? resolve() : reject(err);
+      });
+    });
   });
 
   beforeEach(function() {
