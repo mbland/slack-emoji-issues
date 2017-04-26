@@ -30,25 +30,23 @@ function slackDataStore(robot) {
   }
 }
 
-function fileIssue(filer, response) {
+function fileIssue(robot, filer, response) {
   // ReactionMessage (node_modules/hubot-slack/src/reaction-message.coffee) will
   // trim the 'reaction_' prefix from 'reaction_added'. The slack-github-issues
   // library requires we put it back.
   response.message.type = 'reaction_' + response.message.type;
 
-  return filer.execute(response.message)
+  filer.execute(response.message)
     .then(function(issueUrl) {
       response.reply('created: ' + issueUrl);
-      return issueUrl;
+      robot.emit(response.message.type, { err: null, created: issueUrl });
     })
     .catch(function(err) {
-      var result = err;
-
       if (err) {
-        result = err.message || err;
-        response.reply(result);
+        err = err.message || err;
+        response.reply(err);
       }
-      return result;
+      robot.emit(response.message.type, { err: err, created: null });
     });
 }
 
@@ -56,7 +54,7 @@ module.exports = function(robot) {
   var logger = robot.logger,
       filer,
       listener = function(response) {
-        return fileIssue(filer, response);
+        fileIssue(robot, filer, response);
       };
 
   try {
