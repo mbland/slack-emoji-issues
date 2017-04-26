@@ -27,9 +27,9 @@ chai.use(chaiAsPromised);
 
 describe('Integration test', function() {
   var room, listenerResult, logHelper, apiStubServer, config,
-      apiServerDefaults, reactionAddedMessage, patchReactMethodOntoRoom,
-      patchListenerCallbackAndImpl, sendReaction, initLogMessages,
-      wrapInfoMessages, matchingRule = 'reactionName: evergreen_tree, ' +
+      apiServerDefaults, reactionAddedMessage, patchListenerImpl, sendReaction,
+      initLogMessages, wrapInfoMessages,
+      matchingRule = 'reactionName: evergreen_tree, ' +
         'githubRepository: slack-github-issues, ' +
         'channelNames: bot-dev';
 
@@ -77,9 +77,13 @@ describe('Integration test', function() {
     logHelper = new LogHelper();
     logHelper.capture(function() {
       room = scriptHelper.createRoom({ httpd: false, name: 'bot-dev' });
+      listenerResult = new Promise(function(resolve, reject) {
+        room.robot.on('reaction_added', function(result) {
+          result.err ? reject(result.err) : resolve(result.created);
+        });
+      });
     });
-    patchReactMethodOntoRoom(room);
-    patchListenerCallbackAndImpl(room);
+    patchListenerImpl(room);
     apiStubServer.urlsToResponses = apiServerDefaults();
   });
 
@@ -119,35 +123,24 @@ describe('Integration test', function() {
     };
   };
 
-  reactionAddedMessage = function() {
+  reactionAddedMessage = function(userName, reaction) {
     var user, itemUser, message;
     message = helpers.reactionAddedMessage();
 
     // https://api.slack.com/types/user
     // node_modules/hubot-slack/src/bot.coffee
-    user = new User({ id: message.user, name: 'jquser' });
+    user = new User({ id: message.user, name: userName });
     user.room = message.item.channel;
     itemUser = new User({ id: message.item_user, name: 'rando' });
 
     // node_modules/hubot-slack/src/reaction-message.coffee
-    return new ReactionMessage(message.type, user, message.reaction,
+    message = new ReactionMessage(message.type, user, message.reaction,
       itemUser, message.item, message.event_ts);
+    message.reaction = reaction;
+    return message;
   };
 
-  patchReactMethodOntoRoom = function(room) {
-    room.user.react = function(userName, reaction) {
-      return new Promise(function(resolve) {
-        var reactionMessage = reactionAddedMessage();
-
-        room.messages.push([userName, reaction]);
-        reactionMessage.user.name = userName;
-        reactionMessage.reaction = reaction;
-        room.robot.receive(reactionMessage, resolve);
-      });
-    };
-  };
-
-  patchListenerCallbackAndImpl = function(room) {
+  patchListenerImpl = function(room) {
     var listener, callback;
 
     listener = room.robot.listeners[0];
@@ -163,10 +156,6 @@ describe('Integration test', function() {
       },
       activeTeamId: 'T19845150'
     });
-
-    listener.callback = function(response) {
-      listenerResult = callback(response);
-    };
   };
 
   initLogMessages = function() {
@@ -183,9 +172,12 @@ describe('Integration test', function() {
     });
   };
 
-  sendReaction = function(reactionName) {
-    logHelper.beginCapture();
-    return room.user.react('mbland', reactionName)
+  sendReaction = function(reaction) {
+    return new Promise(
+      function(resolve) {
+        logHelper.beginCapture();
+        room.robot.receive(reactionAddedMessage('mbland', reaction), resolve);
+      })
       .then(function() { return listenerResult; })
       .then(helpers.resolveNextTick, helpers.rejectNextTick)
       .then(logHelper.endCaptureResolve(), logHelper.endCaptureReject());
@@ -222,7 +214,6 @@ describe('Integration test', function() {
   it('should create a GitHub issue given a valid reaction', function() {
     return sendReaction(helpers.REACTION).should.be.fulfilled.then(function() {
       room.messages.should.eql([
-        ['mbland', 'evergreen_tree'],
         ['hubot', '@mbland created: ' + helpers.ISSUE_URL]
       ]);
       logHelper.filteredMessages().should.eql(
@@ -247,12 +238,11 @@ describe('Integration test', function() {
 
     response.statusCode = 500;
     response.payload = payload;
-    return sendReaction(helpers.REACTION).should.become(errorReply)
+    return sendReaction(helpers.REACTION).should.be.rejectedWith(errorReply)
       .then(function() {
         var logMessages;
 
         room.messages.should.eql([
-          ['mbland', 'evergreen_tree'],
           ['hubot', '@mbland ' + errorReply]
         ]);
 
@@ -276,7 +266,7 @@ describe('Integration test', function() {
     });
 
     return sendReaction('sad-face').should.become(null).then(function() {
-      room.messages.should.eql([['mbland', 'sad-face']]);
+      room.messages.should.eql([]);
       logHelper.filteredMessages().should.eql(initLogMessages());
     });
   });
