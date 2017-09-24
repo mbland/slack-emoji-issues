@@ -1,9 +1,21 @@
 # Slack-to-GitHub Issues: Uses Slack `reaction_added` events to file GitHub issues
 
-[![NPM](https://nodei.co/npm/slack-github-issues.png?compact=true)](https://nodei.co/npm/slack-github-issues/)<br/>
-[![Continuous integration status from Travis CI](https://travis-ci.org/mbland/slack-github-issues.svg?branch=master)](https://travis-ci.org/mbland/slack-github-issues)
-[![Static analysis status from Code Climate](https://codeclimate.com/github/mbland/slack-github-issues/badges/gpa.svg)](https://codeclimate.com/github/mbland/slack-github-issues)
-[![Coverage status from Coveralls](https://coveralls.io/repos/mbland/slack-github-issues/badge.svg?branch=master&service=github)](https://coveralls.io/github/mbland/slack-github-issues?branch=master)
+[![NPM][npm-img]][npm-pkg]<br/>
+[![License][lic-img]][lic]
+[![Continuous integration status][ci-img]][ci]
+[![Coverage Status][cov-img]][cov]
+[![Static analysis status][sa-img]][sa]
+
+[npm-img]: https://nodei.co/npm/slack-github-issues.png?compact=true
+[npm-pkg]: https://www.npmjs.com/package/slack-github-issues
+[lic-img]: https://img.shields.io/github/license/mbland/slack-github-issues.svg
+[lic]:     https://github.com/mbland/slack-github-issues/blob/master/LICENSE.md
+[ci-img]:  https://img.shields.io/travis/mbland/slack-github-issues/master.svg
+[ci]:      https://travis-ci.org/mbland/slack-github-issues
+[cov-img]: https://img.shields.io/coveralls/mbland/slack-github-issues/master.svg
+[cov]:     https://coveralls.io/github/mbland/slack-github-issues?branch=master
+[sa-img]:  https://img.shields.io/codeclimate/github/mbland/slack-github-issues.svg
+[sa]:      https://codeclimate.com/github/mbland/slack-github-issues
 
 Source: https://github.com/mbland/slack-github-issues
 
