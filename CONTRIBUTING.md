@@ -1,4 +1,4 @@
-## Welcome!
+# Welcome!
 
 I'm so glad you've found this project interesting and useful enough that you'd
 like to contribute to its development.
@@ -6,14 +6,17 @@ like to contribute to its development.
 Please take time to review the policies and procedures in this document prior
 to making and submitting any changes.
 
-This guide was drafted with tips from [Wrangling Web Contributions: How to
-Build a CONTRIBUTING.md](https://mozillascience.github.io/working-open-workshop/contributing/)
-and with some inspiration from [the Atom project's CONTRIBUTING.md
-file](https://github.com/atom/atom/blob/master/CONTRIBUTING.md).
+This guide was drafted with tips from [Wrangling Web Contributions: How to Build
+a CONTRIBUTING.md][moz] and with some inspiration from [the Atom project's
+CONTRIBUTING.md file][atom].
+
+[moz]:  https://mozillascience.github.io/working-open-workshop/contributing/
+[atom]: https://github.com/atom/atom/blob/master/CONTRIBUTING.md
 
 ## Table of contents
 
 - [Quick links](#quick-links)
+- [Contributor License Agreement](#contributor-license-agreement)
 - [Code of conduct](#code-of-conduct)
 - [Reporting issues](#reporting-issues)
 - [Updating documentation](#updating-documentation)
@@ -31,6 +34,24 @@ file](https://github.com/atom/atom/blob/master/CONTRIBUTING.md).
 - [Original repository](https://github.com/mbland/slack-github-issues)
 - [Issues](https://github.com/mbland/slack-github-issues/issues)
 - [Pull requests](https://github.com/mbland/slack-github-issues/pulls)
+- [Milestones](https://github.com/mbland/slack-github-issues/milestones)
+- [Projects](https://github.com/mbland/slack-github-issues/projects)
+
+## Contributor License Agreement
+
+Per the [GitHub Terms of Service][gh-tos], be aware that by making a
+contribution to this project, you agree:
+
+* to license your contribution under the same terms as [this project's
+  license][lic], and
+* that you have the right to license your contribution under those terms.
+
+See also: ["Does my project need an additional contributor agreement? Probably
+  not."][cla-needed]
+
+[gh-tos]:     https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license
+[lic]:        #open-source-license
+[cla-needed]: https://opensource.guide/legal/#does-my-project-need-an-additional-contributor-agreement
 
 ## Code of conduct
 
@@ -40,10 +61,12 @@ specifics, see the [CODE_OF_CONDUCT](CODE_OF_CONDUCT.md) file.
 ## Reporting issues
 
 Before reporting an issue, please use the search feature on the [issues
-page](https://github.com/mbland/slack-github-issues/issues) to see if an issue
-matching the one you've observed has already been filed.
+page][issues] to see if an issue matching the one you've observed has already
+been filed.
 
 If you do find one...
+
+[issues]: https://github.com/mbland/slack-github-issues/issues
 
 ### Do not add a +1 comment!
 
@@ -76,13 +99,17 @@ preferred, but even one nit is one nit too many.
 ## Development environment setup
 
 Install Node.js per [step 1 of the "Installation and usage" instructions from
-the README](./README.md#installation-and-usage). You don't need to create an app
-instance, a Slack bot user, a GitHub user, a configuration file, or environment
-variables until you intend to deploy your app.
+the README][install]. You don't need to create an app instance, a Slack bot
+user, a GitHub user, a configuration file, or environment variables until you
+intend to deploy your app.
 
-You will need [Git](https://git-scm.com/downloads) installed on your system. If
-you are not familiar with Git, you may wish to reference the [Git
-documentation](https://git-scm.com/doc).
+[install]: ./README.md#installation-and-usage
+
+You will also need [Git][] installed on your system. If you are not familiar
+with Git, you may wish to reference the [Git documentation][git-doc].
+
+[Git]:     https://git-scm.com/downloads
+[git-doc]: https://git-scm.com/doc
 
 Once Node.js and Git are installed, clone this repository and ensure your
 development environment is in a good state:
@@ -118,43 +145,39 @@ Flow](https://guides.github.com/introduction/flow/), except that you will be
 working with your own fork of the repository and issuing pull requests to the
 original.
 
-If you know you will be submitting changes upstream,  and [fork the
-repository]().
-
-1. [Create a GitHub account](https://github.com/join) if you've not done so
-   already
-1. Create your own fork of the repository by clicking the "Fork" button on
-   https://github.com/mbland/slack-github-issues
-1. Clone your forked repo to your local machine, or add it as a remote to your
-   existing clone of the original (renaming the original `origin` to `upstream`
-   first; replace `<USERNAME>` with your own GitHub username):
-   ```sh
-   $ git remote rename origin upstream
-   $ git remote add origin git@github.com:<USERNAME>/slack-github-issues.git
-   $ git fetch origin
-   $ git checkout master
-   $ git reset --hard origin/master
-   ```
+1. Fork the repo on GitHub (look for the "Fork" button)
+1. Clone your forked repo to your local machine
 1. Create your feature branch (`git checkout -b my-new-feature`)
 1. Develop _and [test](#testing)_ your changes as necessary.
 1. Commit your changes (`git commit -am 'Add some feature'`)
 1. Push to the branch (`git push origin my-new-feature`)
-1. Create a new [GitHub pull
-   request](https://help.github.com/articles/using-pull-requests/) for your
-   feature branch based against the original repository's `upstream/master`
-   branch
-1. If your request is accepted, you can [delete your feature
-   branch](https://help.github.com/articles/deleting-unused-branches/) and
-   pull the updated `upstream/master` branch from the original repository into
-   your fork. You may even [delete your
-   fork](https://help.github.com/articles/deleting-a-repository/) if you don't
-   anticipate making further changes.
+1. Create a new [GitHub pull request][gh-pr] for your feature branch based
+   against the original repository's `master` branch
+1. If your request is accepted, you can [delete your feature branch][rm-branch]
+   and pull the updated `master` branch from the original repository into your
+   fork. You may even [delete your fork][rm-fork] if you don't anticipate making
+   further changes.
+
+[gh-pr]:     https://help.github.com/articles/using-pull-requests/
+[rm-branch]: https://help.github.com/articles/deleting-unused-branches/
+[rm-fork]:   https://help.github.com/articles/deleting-a-repository/
 
 ## Testing
 
-- Continuous integration status: [![Continuous integration status from Travis CI](https://travis-ci.org/mbland/slack-github-issues.svg?branch=master)](https://travis-ci.org/mbland/slack-github-issues)
-- Static analysis status: [![Static analysis status from Code Climate](https://codeclimate.com/github/mbland/slack-github-issues/badges/gpa.svg)](https://codeclimate.com/github/mbland/slack-github-issues)
-- Coverage status: [![Coverage status from Coveralls](https://coveralls.io/repos/mbland/slack-github-issues/badge.svg?branch=master&service=github)](https://coveralls.io/github/mbland/slack-github-issues?branch=master)
+- Continuous integration status: [![Continuous integration status][ci-img]][ci]
+- Static analysis status: [![Static analysis status][sa-img]][sa]
+- Coverage status: [![Coverage status][cov-img]][cov]
+
+- Continuous integration status: [![Continuous integration status][ci-img]][ci]
+- Coverage status: [![Coverage Status][cov-img]][cov]
+
+[ci-img]:  https://img.shields.io/travis/mbland/slack-github-issues/master.svg
+[ci]:      https://travis-ci.org/mbland/slack-github-issues
+[sa-img]:  https://codeclimate.com/github/mbland/slack-github-issues/badges/gpa.svg
+[sa]:      https://codeclimate.com/github/mbland/slack-github-issues
+[cov-img]: https://img.shields.io/coveralls/mbland/slack-github-issues/master.svg
+[cov]:     https://coveralls.io/github/mbland/slack-github-issues?branch=master
+
 
 No bug fixes or new features will be accepted without accompanying tests.
 Period.
@@ -162,11 +185,14 @@ Period.
 Any changes that break the continuous integration build must be fixed or rolled
 back immediately.
 
-This project uses the [Mocha test framework](https://mochajs.org/), the [Chai
-assertion library](http://chaijs.com/), and the [Chai-as-promised assertions for
-Promises library](https://www.npmjs.com/package/chai-as-promised) to write and
-run tests. All tests are in the `tests/` directory and are run using the `./go
-test` command.
+This project uses the [Mocha test framework][mocha], the [Chai assertion
+library][chai], and the [Chai-as-promised assertions for Promises
+library][c-a-p] to write and run tests. All tests are in the `tests/` directory
+and are run using the `./go test` command.
+
+[mocha]: https://mochajs.org/
+[chai]:  http://chaijs.com/
+[c-a-p]: https://www.npmjs.com/package/chai-as-promised
 
 The `./go test` command has a very flexible syntax for running a subset of test
 suites and passing command line options to Mocha. Enabling tab completion via
@@ -274,7 +300,8 @@ it easier to find, count, and possibly transform things.
 
 ## Open Source License
 
-This software is made available as [Open Source
-software](https://opensource.org/osd-annotated) under the [ISC
-License](https://www.isc.org/downloads/software-support-policy/isc-license/).
-For the text of the license, see the [LICENSE](LICENSE.md) file.
+This software is made available as [Open Source software][oss] under the [ISC
+License][isc]. For the text of the license, see the [LICENSE](LICENSE.md) file.
+
+[oss]: https://opensource.org/osd-annotated
+[isc]: https://www.isc.org/downloads/software-support-policy/isc-license/
