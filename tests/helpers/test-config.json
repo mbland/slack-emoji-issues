@@ -1,7 +1,7 @@
 {
   "collection": "mbland",
   "githubApiToken": "<github-api-token>",
-  "githubTimeout": 5000,
+  "issuesTimeout": 5000,
   "slackApiToken": "<slack-api-token>",
   "slackTimeout": 5000,
   "successReaction": "heavy_check_mark",

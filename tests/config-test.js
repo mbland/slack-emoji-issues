@@ -21,7 +21,7 @@ describe('Config', function() {
     var errors = [
           'missing collection',
           'missing githubApiToken',
-          'missing githubTimeout',
+          'missing issuesTimeout',
           'missing slackApiToken',
           'missing slackTimeout',
           'missing successReaction',
