@@ -8,18 +8,18 @@
   "rules": [
     {
       "reactionName": "evergreen_tree",
-      "githubRepository": "slack-emoji-issues",
+      "target": "slack-emoji-issues",
       "channelNames": ["bot-dev"]
     },
 
     {
       "reactionName": "evergreen_tree",
-      "githubRepository": "handbook"
+      "target": "handbook"
     },
 
     {
       "reactionName": "smiley",
-      "githubRepository": "hubot-slack-github-issues"
+      "target": "hubot-slack-github-issues"
     }
   ]
 }

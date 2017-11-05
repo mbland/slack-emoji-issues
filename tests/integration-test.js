@@ -30,7 +30,7 @@ describe('Integration test', function() {
       apiServerDefaults, reactionAddedMessage, patchListenerImpl, sendReaction,
       initLogMessages, wrapInfoMessages,
       matchingRule = 'reactionName: evergreen_tree, ' +
-        'githubRepository: slack-emoji-issues, ' +
+        'target: slack-emoji-issues, ' +
         'channelNames: bot-dev'
 
   before(function() {

@@ -44,7 +44,7 @@ describe('ReactionIssueFiler', function() {
           result = reactor.findMatchingRule(message, channelName)
 
       result.reactionName.should.equal(expected.reactionName)
-      result.githubRepository.should.equal(expected.githubRepository)
+      result.target.should.equal(expected.target)
       result.should.not.have.property('channelName')
     })
 

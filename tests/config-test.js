@@ -58,7 +58,7 @@ describe('Config', function() {
     configData.rules[0].xyzzy = 'plugh'
     configData.rules.push({
       'reactionName': 'smiley',
-      'githubRepository': 'mbland/slack-emoji-issues',
+      'target': 'mbland/slack-emoji-issues',
       'channelNames': ['hub'],
       'quux': {}
     })
@@ -71,12 +71,12 @@ describe('Config', function() {
     var configData = helpers.baseConfig(),
         errors = [
           'rule 0 missing reactionName',
-          'rule 2 missing githubRepository'
+          'rule 2 missing target'
         ],
         errorMessage = 'Invalid configuration:\n  ' + errors.join('\n  ')
 
     delete configData.rules[0].reactionName
-    delete configData.rules[2].githubRepository
+    delete configData.rules[2].target
 
     expect(function() { return new Config(configData) })
       .to.throw(Error, errorMessage)
@@ -150,14 +150,14 @@ describe('Config', function() {
 
       configData.rules = [
         { reactionName: 'smiley',
-          githubRepository: 'hubot-slack-github-issues'
+          target: 'hubot-slack-github-issues'
         },
         { reactionName: 'evergreen_tree',
-          githubRepository: 'slack-emoji-issues',
+          target: 'slack-emoji-issues',
           channelNames: ['bot-dev']
         },
         { reactionName: 'evergreen_tree',
-          githubRepository: 'handbook'
+          target: 'handbook'
         }
       ]
       errorMessage = 'Invalid configuration:\n' +
@@ -176,14 +176,14 @@ describe('Config', function() {
 
       configData.rules = [
         { reactionName: 'evergreen_tree',
-          githubRepository: 'handbook'
+          target: 'handbook'
         },
         { reactionName: 'evergreen_tree',
-          githubRepository: 'slack-emoji-issues',
+          target: 'slack-emoji-issues',
           channelNames: ['bot-dev']
         },
         { reactionName: 'smiley',
-          githubRepository: 'hubot-slack-github-issues'
+          target: 'hubot-slack-github-issues'
         }
       ]
       errorMessage = 'Invalid configuration:\n' +
@@ -203,15 +203,15 @@ describe('Config', function() {
 
       correctConfig.rules = [
         { reactionName: 'evergreen_tree',
-          githubRepository: 'handbook',
+          target: 'handbook',
           channelNames: ['handbook']
         },
         { reactionName: 'evergreen_tree',
-          githubRepository: 'hub',
+          target: 'hub',
           channelNames: ['hub']
         },
         { reactionName: 'smiley',
-          githubRepository: 'hubot-slack-github-issues'
+          target: 'hubot-slack-github-issues'
         }
       ]
 
@@ -234,9 +234,9 @@ describe('Config', function() {
       var configData = helpers.baseConfig(),
           errorMessage
 
-      configData.rules[0].githubRepository = 'guides'
+      configData.rules[0].target = 'guides'
       configData.rules[0].channelNames = ['wg-testing', 'wg-documentation']
-      configData.rules[1].githubRepository = 'handbook'
+      configData.rules[1].target = 'handbook'
       configData.rules[1].channelNames = ['hub', 'handbook']
       errorMessage = 'Invalid configuration:\n' +
         '  channelNames for evergreen_tree rule 0 are not sorted; expected:\n' +
@@ -254,7 +254,7 @@ describe('Config', function() {
           errorMessage
 
       configData.rules.forEach(function(rule) {
-        rule.githubRepository = 'handbook'
+        rule.target = 'handbook'
       })
       errorMessage = 'Invalid configuration:\n' +
         '  duplicate repositories for evergreen_tree rules:\n' +
@@ -268,7 +268,7 @@ describe('Config', function() {
           errorMessage
 
       configData.rules.forEach(function(rule) {
-        rule.githubRepository = 'handbook'
+        rule.target = 'handbook'
         rule.channelNames = ['hub']
       })
 
@@ -287,9 +287,9 @@ describe('Config', function() {
       var configData = helpers.baseConfig(),
           errorMessage
 
-      configData.rules[0].githubRepository = 'handbook'
+      configData.rules[0].target = 'handbook'
       delete configData.rules[0].channelNames
-      configData.rules[1].githubRepository = 'hub'
+      configData.rules[1].target = 'hub'
 
       errorMessage = 'Invalid configuration:\n' +
         '  multiple all-channel rules defined for evergreen_tree'
