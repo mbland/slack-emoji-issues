@@ -47,7 +47,11 @@ describe('Integration test', function() {
         if (err) {
           return reject(err);
         }
-        fs.write(info.fd, JSON.stringify(config));
+        fs.write(info.fd, JSON.stringify(config), function(err) {
+          if (err) {
+            reject(err);
+          }
+        });
         fs.close(info.fd, function(err) {
           if (!err) {
             process.env.HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH = info.path;
