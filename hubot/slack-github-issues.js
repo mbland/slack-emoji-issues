@@ -11,6 +11,12 @@
 var path = require('path');
 var slackGitHubIssues = require('..');
 
+// Remove this block and close #15 when slackapi/hubot-slack#429 is done.
+require('hubot-slack');
+var CoffeeScriptCompatibleHubot = require('hubot');
+var Hubot = require('hubot/es2015');
+Hubot.Robot.prototype.react = CoffeeScriptCompatibleHubot.Robot.prototype.react;
+
 function configParams() {
   var params = {updates: {}};
 
