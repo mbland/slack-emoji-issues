@@ -139,7 +139,7 @@ describe('ReactionIssueFiler', function() {
             helpers.logArgs('matches rule:', matchingRule.toLogString()),
             helpers.logArgs('getting reactions'),
             helpers.logArgs('filing GitHub issue in ' +
-              'mbland/slack-github-issues'),
+              'mbland/slack-emoji-issues'),
             helpers.logArgs('adding', helpers.baseConfig().successReaction),
             helpers.logArgs('created: ' + helpers.ISSUE_URL)
           ])

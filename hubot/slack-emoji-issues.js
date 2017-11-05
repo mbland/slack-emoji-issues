@@ -1,5 +1,5 @@
 // Description:
-//   Uses the Slack Real Time Messaging API to file GitHub issues
+//   Uses the Slack Real Time Messaging API to file issues from emoji reactions
 //
 // Configuration:
 //   HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH
@@ -21,7 +21,7 @@ function configParams() {
   var params = {updates: {}}
 
   params.path = process.env.HUBOT_SLACK_GITHUB_ISSUES_CONFIG_PATH ||
-    path.join('config', 'slack-github-issues.json')
+    path.join('config', 'slack-emoji-issues.json')
 
   params.updates.slackApiToken = process.env.HUBOT_SLACK_TOKEN
   params.updates.githubApiToken = process.env.HUBOT_GITHUB_TOKEN
@@ -38,7 +38,7 @@ function slackDataStore(robot) {
 
 function fileIssue(robot, filer, response) {
   // ReactionMessage (node_modules/hubot-slack/src/reaction-message.coffee) will
-  // trim the 'reaction_' prefix from 'reaction_added'. The slack-github-issues
+  // trim the 'reaction_' prefix from 'reaction_added'. The slack-emoji-issues
   // library requires we put it back.
   response.message.type = 'reaction_' + response.message.type
 

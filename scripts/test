@@ -1,5 +1,5 @@
 #! /bin/bash
-# 
+#
 # Run automated tests
 #
 # Usage:
@@ -152,7 +152,7 @@ _test_coverage() {
         return 1
       fi
       echo -n 'Coverage report sent to Code Climate: '
-      echo 'https://codeclimate.com/github/mbland/slack-github-issues'
+      echo 'https://codeclimate.com/github/mbland/slack-emoji-issues'
     fi
   fi
 }
