@@ -19,7 +19,7 @@ describe('Config', function() {
 
   it('should raise errors for missing required fields', function() {
     var errors = [
-          'missing githubUser',
+          'missing collection',
           'missing githubApiToken',
           'missing githubTimeout',
           'missing slackApiToken',
