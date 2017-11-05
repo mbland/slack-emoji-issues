@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-var testConfig = require('./test-config.json');
-var constants = require('../../lib/constants');
+var testConfig = require('./test-config.json')
+var constants = require('../../lib/constants')
 
 exports = module.exports = {
   REACTION: 'evergreen_tree',
@@ -19,24 +19,24 @@ exports = module.exports = {
   MESSAGE_ID: 'T19845150:C5150OU812:1360782804.083113',
 
   baseConfig: function() {
-    return JSON.parse(JSON.stringify(testConfig));
+    return JSON.parse(JSON.stringify(testConfig))
   },
 
   rtmClient: function() {
     return {
       dataStore: {
         getChannelById: function(channelId) {
-          return { id: channelId, name: exports.CHANNEL_NAME };
+          return { id: channelId, name: exports.CHANNEL_NAME }
         },
         getGroupById: function(groupId) {
-          return { id: groupId, name: exports.PRIVATE_CHANNEL_NAME };
+          return { id: groupId, name: exports.PRIVATE_CHANNEL_NAME }
         },
         teams: {
           T19845150: { domain: exports.TEAM_DOMAIN }
         }
       },
       activeTeamId: exports.TEAM_ID
-    };
+    }
   },
 
   // https://api.slack.com/events/reaction_added
@@ -52,7 +52,7 @@ exports = module.exports = {
         ts: exports.TIMESTAMP
       },
       'event_ts': exports.TIMESTAMP
-    };
+    }
   },
 
   getReactionsResponse: function() {
@@ -67,7 +67,7 @@ exports = module.exports = {
         reactions: [
         ]
       }
-    };
+    }
   },
 
   metadata: function() {
@@ -78,18 +78,18 @@ exports = module.exports = {
       date: new Date(1360782804.083113 * 1000),
       title: 'Update from #' + exports.CHANNEL_NAME +
         ' at Wed, 13 Feb 2013 19:13:24 GMT'
-    };
+    }
   },
 
   logArgs: function() {
     var args = new Array(arguments.length),
-        i;
+        i
 
     for (i = 0; i !== args.length; ++i) {
-      args[i] = arguments[i];
+      args[i] = arguments[i]
     }
-    args.unshift(exports.MESSAGE_ID);
-    return args;
+    args.unshift(exports.MESSAGE_ID)
+    return args
   },
 
   // resolveNextTick and rejectNextTick ensure that the event loop is flushed
@@ -101,13 +101,13 @@ exports = module.exports = {
   //     .then(helpers.resolveNextTick, helpers.rejectNextTick);
   resolveNextTick: function(value) {
     return new Promise(function(resolve) {
-      process.nextTick(function() { resolve(value); });
-    });
+      process.nextTick(function() { resolve(value) })
+    })
   },
 
   rejectNextTick: function(err) {
     return new Promise(function(_, reject) {
-      process.nextTick(function() { reject(err); });
-    });
+      process.nextTick(function() { reject(err) })
+    })
   }
-};
+}
