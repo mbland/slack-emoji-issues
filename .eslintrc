@@ -19,7 +19,7 @@
     ],
     "semi": [
         2,
-        "always"
+        "never"
     ],
     "comma-dangle": [
         1,

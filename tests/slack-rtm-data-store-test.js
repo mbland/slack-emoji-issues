@@ -1,37 +1,37 @@
-'use strict';
+'use strict'
 
-var SlackRtmDataStore = require('../lib/slack-rtm-data-store');
-var helpers = require('./helpers');
-var chai = require('chai');
-var chaiAsPromised = require('chai-as-promised');
+var SlackRtmDataStore = require('../lib/slack-rtm-data-store')
+var helpers = require('./helpers')
+var chai = require('chai')
+var chaiAsPromised = require('chai-as-promised')
 
-chai.should();
-chai.use(chaiAsPromised);
+chai.should()
+chai.use(chaiAsPromised)
 
 describe('SlackRtmDataStore', function() {
-  var rtmDataStore;
+  var rtmDataStore
 
   before(function() {
-    rtmDataStore = new SlackRtmDataStore(helpers.rtmClient());
-  });
+    rtmDataStore = new SlackRtmDataStore(helpers.rtmClient())
+  })
 
   it('returns the team ID directly', function() {
-    rtmDataStore.teamId().should.equal(helpers.TEAM_ID);
-  });
+    rtmDataStore.teamId().should.equal(helpers.TEAM_ID)
+  })
 
   it('returns a Promise from channelById with public channel', function() {
     return rtmDataStore.channelById(helpers.CHANNEL_ID)
-      .should.become({ id: helpers.CHANNEL_ID, name: helpers.CHANNEL_NAME });
-  });
+      .should.become({ id: helpers.CHANNEL_ID, name: helpers.CHANNEL_NAME })
+  })
 
   it('returns a Promise from channelById with private channel', function() {
     return rtmDataStore.channelById(helpers.PRIVATE_CHANNEL_ID)
       .should.become({ id: helpers.PRIVATE_CHANNEL_ID,
-        name: helpers.PRIVATE_CHANNEL_NAME });
-  });
+        name: helpers.PRIVATE_CHANNEL_NAME })
+  })
 
   it('returns a Promise from teamInfo', function() {
     return rtmDataStore.teamInfo(helpers.CHANNEL_ID)
-      .should.become({ domain: helpers.TEAM_DOMAIN });
-  });
-});
+      .should.become({ domain: helpers.TEAM_DOMAIN })
+  })
+})
