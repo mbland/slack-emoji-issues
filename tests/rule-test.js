@@ -8,7 +8,7 @@ describe('Rule', function() {
   var makeConfigRule = function() {
     return {
       reactionName: 'evergreen_tree',
-      githubRepository: 'slack-github-issues',
+      githubRepository: 'slack-emoji-issues',
       channelNames: ['bot-dev']
     }
   }
@@ -34,7 +34,7 @@ describe('Rule', function() {
       configRule.channelNames.push('general')
       expect(new Rule(configRule).toLogString())
         .to.eql('reactionName: evergreen_tree, ' +
-          'githubRepository: slack-github-issues, ' +
+          'githubRepository: slack-emoji-issues, ' +
           'channelNames: bot-dev,general')
     })
 
@@ -43,7 +43,7 @@ describe('Rule', function() {
       delete configRule.channelNames
       expect(new Rule(configRule).toLogString())
         .to.eql('reactionName: evergreen_tree, ' +
-          'githubRepository: slack-github-issues')
+          'githubRepository: slack-emoji-issues')
     })
   })
 

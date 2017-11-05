@@ -14,14 +14,14 @@ var usage = [
   'Where:',
   '  -h, --help, help        show this help',
   '  -v, --version, version  show version info',
-  '  print-template          print an example slack-github-issues.json config',
+  '  print-template          print an example slack-emoji-issues.json config',
   '  validate <config.json>  validate the specified config file'
 ].join('\n');
 
 var showHelp, showVersion;
 
 if (option === 'print-template') {
-  var config = require('../config/slack-github-issues.json');
+  var config = require('../config/slack-emoji-issues.json');
   console.log(JSON.stringify(config, null, 2));
   process.exit(0);
 }

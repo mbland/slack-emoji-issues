@@ -53,6 +53,6 @@ module.exports = exports = {
         path = require('path')
 
     logger.info(null, 'loading')
-    robot.loadFile(path.resolve(__dirname, 'hubot'), 'slack-github-issues.js')
+    robot.loadFile(path.resolve(__dirname, 'hubot'), 'slack-emoji-issues.js')
   }
 }

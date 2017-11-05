@@ -8,7 +8,7 @@
   "rules": [
     {
       "reactionName": "evergreen_tree",
-      "githubRepository": "slack-github-issues",
+      "githubRepository": "slack-emoji-issues",
       "channelNames": ["bot-dev"]
     },
 

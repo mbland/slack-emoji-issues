@@ -4,9 +4,9 @@
   contribution under the same terms as [this project's license][license], and
   that I have the right to license my contribution under those terms.
 
-[contrib]: https://github.com/mbland/slack-github-issues/blob/master/CONTRIBUTING.md
-[conduct]: https://github.com/mbland/slack-github-issues/blob/master/CODE_OF_CONDUCT.md
+[contrib]: https://github.com/mbland/slack-emoji-issues/blob/master/CONTRIBUTING.md
+[conduct]: https://github.com/mbland/slack-emoji-issues/blob/master/CODE_OF_CONDUCT.md
 [gh-tos]:  https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license
-[license]: https://github.com/mbland/slack-github-issues/blob/master/LICENSE.md
+[license]: https://github.com/mbland/slack-emoji-issues/blob/master/LICENSE.md
 
 cc: @mbland

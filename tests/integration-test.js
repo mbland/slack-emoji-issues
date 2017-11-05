@@ -2,7 +2,7 @@
 
 require('coffee-script/register')
 var Helper = require('hubot-test-helper')
-var scriptHelper = new Helper('../hubot/slack-github-issues.js')
+var scriptHelper = new Helper('../hubot/slack-emoji-issues.js')
 var User = require('@slack/client/lib/models/user')
 var ReactionMessage = require('hubot-slack/src/reaction-message')
 
@@ -30,7 +30,7 @@ describe('Integration test', function() {
       apiServerDefaults, reactionAddedMessage, patchListenerImpl, sendReaction,
       initLogMessages, wrapInfoMessages,
       matchingRule = 'reactionName: evergreen_tree, ' +
-        'githubRepository: slack-github-issues, ' +
+        'githubRepository: slack-emoji-issues, ' +
         'channelNames: bot-dev'
 
   before(function() {
@@ -104,7 +104,7 @@ describe('Integration test', function() {
         statusCode: 200,
         payload: helpers.getReactionsResponse()
       },
-      '/github/repos/mbland/slack-github-issues/issues': {
+      '/github/repos/mbland/slack-emoji-issues/issues': {
         expectedParams: {
           title: metadata.title,
           body: metadata.url
@@ -225,7 +225,7 @@ describe('Integration test', function() {
           'processing: ' + helpers.PERMALINK,
           'matches rule: ' + matchingRule,
           'getting reactions',
-          'filing GitHub issue in mbland/slack-github-issues',
+          'filing GitHub issue in mbland/slack-emoji-issues',
           'adding ' + config.successReaction,
           'created: ' + helpers.ISSUE_URL
         ]))
@@ -235,7 +235,7 @@ describe('Integration test', function() {
 
   it('should fail to create a GitHub issue', function() {
     var payload = { message: 'test failure' },
-        url = '/github/repos/mbland/slack-github-issues/issues',
+        url = '/github/repos/mbland/slack-emoji-issues/issues',
         response = apiStubServer.urlsToResponses[url],
         errorReply = 'failed to create a GitHub issue: ' +
           'received 500 response from GitHub API: ' + JSON.stringify(payload)
@@ -254,7 +254,7 @@ describe('Integration test', function() {
           'processing: ' + helpers.PERMALINK,
           'matches rule: ' + matchingRule,
           'getting reactions',
-          'filing GitHub issue in mbland/slack-github-issues'
+          'filing GitHub issue in mbland/slack-emoji-issues'
         ]))
         logMessages.push('ERROR ' + helpers.MESSAGE_ID + ': ' + errorReply)
         logHelper.filteredMessages().should.eql(logMessages)
